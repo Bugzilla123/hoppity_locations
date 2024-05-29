@@ -167,23 +167,22 @@ const LOCATIONS_DATA: EggLocation[] = [
     new EggLocation(Island.SPIDER_DEN, 12, new Coordinates(-398, 139, -250), 'x: -398, y: 139, z: -250'),
     new EggLocation(Island.SPIDER_DEN, 13, new Coordinates(-283, 129, -185), 'x: -283, y: 129, z: -185'),
     new EggLocation(Island.SPIDER_DEN, 14, new Coordinates(-200, 174, -313), 'x: -200, y: 174, z: -313'),
-
     // THE_PARK locations
-    new EggLocation(Island.THE_PARK, 0, new Coordinates(-149, 71, 73), 'x: -149, y: 71, z: 73'),
-    new EggLocation(Island.THE_PARK, 1, new Coordinates(-104, 75, 54), 'x: -104, y: 75, z: 54'),
-    new EggLocation(Island.THE_PARK, 2, new Coordinates(-118, 70, 4), 'x: -118, y: 70, z: 4'),
-    new EggLocation(Island.THE_PARK, 3, new Coordinates(-154, 71, -29), 'x: -154, y: 71, z: -29'),
-    new EggLocation(Island.THE_PARK, 4, new Coordinates(-132, 71, -63), 'x: -132, y: 71, z: -63'),
-    new EggLocation(Island.THE_PARK, 5, new Coordinates(-99, 76, -28), 'x: -99, y: 76, z: -28'),
-    new EggLocation(Island.THE_PARK, 6, new Coordinates(-117, 71, -69), 'x: -117, y: 71, z: -69'),
-    new EggLocation(Island.THE_PARK, 7, new Coordinates(-109, 67, -71), 'x: -109, y: 67, z: -71'),
-    new EggLocation(Island.THE_PARK, 8, new Coordinates(-141, 70, -84), 'x: -141, y: 70, z: -84'),
-    new EggLocation(Island.THE_PARK, 9, new Coordinates(-90, 71, -42), 'x: -90, y: 71, z: -42'),
-    new EggLocation(Island.THE_PARK, 10, new Coordinates(-102, 72, -98), 'x: -102, y: 72, z: -98'),
-    new EggLocation(Island.THE_PARK, 11, new Coordinates(-132, 71, -104), 'x: -132, y: 71, z: -104'),
-    new EggLocation(Island.THE_PARK, 12, new Coordinates(-119, 67, -128), 'x: -119, y: 67, z: -128'),
-    new EggLocation(Island.THE_PARK, 13, new Coordinates(-94, 71, -61), 'x: -94, y: 71, z: -61'),
-    new EggLocation(Island.THE_PARK, 14, new Coordinates(-116, 71, -44), 'x: -116, y: 71, z: -44'),
+    new EggLocation(Island.THE_PARK, 0, new Coordinates(-440, 110, -40), 'x: -440, y: 110, z: -40'),
+    new EggLocation(Island.THE_PARK, 1, new Coordinates(-461, 110, -9), 'x: -461, y: 110, z: -9'),
+    new EggLocation(Island.THE_PARK, 2, new Coordinates(-406, 121, -90), 'x: -406, y: 121, z: -90'),
+    new EggLocation(Island.THE_PARK, 3, new Coordinates(-455, 94, -1), 'x: -455, y: 94, z: -1'),
+    new EggLocation(Island.THE_PARK, 4, new Coordinates(-327, 104, -113), 'x: -327, y: 104, z: -113'),
+    new EggLocation(Island.THE_PARK, 5, new Coordinates(-362, 91, 76), 'x: -362, y: 91, z: 76'),
+    new EggLocation(Island.THE_PARK, 6, new Coordinates(-400, 110, 35), 'x: -400, y: 110, z: 35'),
+    new EggLocation(Island.THE_PARK, 7, new Coordinates(-309, 82, 18), 'x: -309, y: 82, z: 18'),
+    new EggLocation(Island.THE_PARK, 8, new Coordinates(-276, 87, -17), 'x: -276, y: 87, z: -17'),
+    new EggLocation(Island.THE_PARK, 9, new Coordinates(-285, 82, -41), 'x: -285, y: 82, z: -41'),
+    new EggLocation(Island.THE_PARK, 10, new Coordinates(-407, 129, -123), 'x: -407, y: 129, z: -123'),
+    new EggLocation(Island.THE_PARK, 11, new Coordinates(-441, 124, -109), 'x: -441, y: 124, z: -109'),
+    new EggLocation(Island.THE_PARK, 12, new Coordinates(-312, 83, -72), 'x: -312, y: 83, z: -72'),
+    new EggLocation(Island.THE_PARK, 13, new Coordinates(-380, 61, 35), 'x: -380, y: 61, z: 35'),
+    new EggLocation(Island.THE_PARK, 14, new Coordinates(-454, 138, -121), 'x: -454, y: 138, z: -121'),
     // THE_END locations
     new EggLocation(Island.THE_END, 0, new Coordinates(-451, 50, -274), 'x: -451, y: 50, z: -274'),
     new EggLocation(Island.THE_END, 1, new Coordinates(-539, 102, -271), 'x: -539, y: 102, z: -271'),
@@ -300,7 +299,7 @@ function updateUI() {
         eggs_in_island_data.forEach((egg, _) => {
             var elem = document.createElement('img')
             elem.addEventListener('click', () => onClickImage(island, egg.index))
-            elem.setAttribute('src', `/static/images/${egg.island.toLowerCase()}/${egg.index}.png`)
+            elem.setAttribute('src', `./static/images/${egg.island.toLowerCase()}/${egg.index}.png`)
 
             setImageClass(elem, state.found[island].includes(egg.index))
 
