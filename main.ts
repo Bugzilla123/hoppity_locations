@@ -300,7 +300,7 @@ function updateUI() {
         eggs_in_island_data.forEach((egg, _) => {
             var elem = document.createElement('img')
             elem.addEventListener('click', () => onClickImage(island, egg.index))
-            elem.setAttribute('src', `/static/images/${egg.island.toLowerCase()}/${egg.index}.png`)
+            elem.setAttribute('src', `./static/images/${egg.island.toLowerCase()}/${egg.index}.png`)
             
             setImageClass(elem, state.found[island].includes(egg.index))
 
