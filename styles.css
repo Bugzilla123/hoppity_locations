@@ -1,0 +1,17 @@
+*,
+body {
+    background-color: white;
+}
+
+img {
+    width: 600px;
+    background-color: blanchedalmond;
+}
+
+.found {
+    border: 20px solid green;
+}
+
+.not-found {
+    border: 20px solid red;
+}
