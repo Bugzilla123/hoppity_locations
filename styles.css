@@ -15,10 +15,26 @@ img {
     grid-template-columns: auto auto auto;
 }
 
+.toggle-vis {
+    height: 50px;
+    width: 100%;
+    font-size: xx-large;
+}
+
+.hidden {
+    display: none;
+}
+
 .found {
     border: 20px solid green;
 }
 
 .not-found {
     border: 20px solid red;
+}
+
+#global-toggle {
+    width: 100%;
+    height: 80px;
+    font-size: xx-large;
 }
