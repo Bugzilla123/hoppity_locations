@@ -268,12 +268,7 @@ function updateUI() {
         let total_in_island = eggs_in_island_data.length;
         let found_in_island = state.found[island].length;
         count.innerHTML = `${found_in_island} / 15 (Total ${total_in_island})`;
-        button.addEventListener('click', () => {
-            if (images_container.className.includes('hidden'))
-                images_container.className = 'images';
-            else
-                images_container.className = 'images hidden';
-        });
+        
         eggs_in_island_data.forEach((egg, _) => {
             var elem = document.createElement('img');
             elem.addEventListener('click', () => onClickImage(island, egg.index));
@@ -285,11 +280,7 @@ function updateUI() {
     });
 }
 updateUI();
-let global_toggle = document.getElementById('global-toggle');
-global_toggle === null || global_toggle === void 0 ? void 0 : global_toggle.addEventListener('click', () => {
-    hide_found = !hide_found;
-    updateUI();
-});
+
 function onClickImage(island, index) {
     if (state.found[island].includes(index))
         state.found[island] = state.found[island].filter((item) => item !== index);
