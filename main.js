@@ -249,32 +249,47 @@ class FoundInfo {
     }
 }
 let state = new FoundInfo();
-console.log(state);
+let hide_found = false;
 let island_containers = new Map();
 for (const [key, value] of Object.entries(state.found)) {
     island_containers.set(key, document.getElementById(key.toLowerCase()));
 }
-const setImageClass = (elem, shouldBeFound) => (elem.className = shouldBeFound ? 'found' : 'not-found');
+const setImageClass = (elem, found, hide_found) => {
+    let className = found ? 'found' : 'not-found';
+    if (hide_found && found)
+        className += " hidden";
+    elem.className = className;
+};
 function updateUI() {
     island_containers.forEach((container, island) => {
-        let [name, count, images_container] = container.children;
+        let [name, count, button, images_container] = container.children;
         images_container.replaceChildren();
         let eggs_in_island_data = LOCATIONS_DATA.filter((egg) => egg.island == island);
         let total_in_island = eggs_in_island_data.length;
         let found_in_island = state.found[island].length;
         count.innerHTML = `${found_in_island} / 15 (Total ${total_in_island})`;
-        console.log(state.found[island]);
+        button.addEventListener('click', () => {
+            if (images_container.className.includes('hidden'))
+                images_container.className = 'images';
+            else
+                images_container.className = 'images hidden';
+        });
         eggs_in_island_data.forEach((egg, _) => {
             var elem = document.createElement('img');
             elem.addEventListener('click', () => onClickImage(island, egg.index));
             elem.setAttribute('src', `./static/images/${egg.island.toLowerCase()}/${egg.index}.png`);
-            setImageClass(elem, state.found[island].includes(egg.index));
+            var is_found = state.found[island].includes(egg.index);
+            setImageClass(elem, is_found, hide_found);
             images_container.appendChild(elem);
         });
     });
 }
-console.log(island_containers);
 updateUI();
+let global_toggle = document.getElementById('global-toggle');
+global_toggle === null || global_toggle === void 0 ? void 0 : global_toggle.addEventListener('click', () => {
+    hide_found = !hide_found;
+    updateUI();
+});
 function onClickImage(island, index) {
     if (state.found[island].includes(index))
         state.found[island] = state.found[island].filter((item) => item !== index);
