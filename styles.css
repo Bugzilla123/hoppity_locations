@@ -22,3 +22,47 @@ img {
 .not-found {
     border: 20px solid red;
 }
+
+.tabs {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab {
+    padding: 14px 20px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+    overflow-x: auto;
+}
+
+.tab:hover {
+    background-color: #ddd;
+}
+
+.tab.active {
+    background-color: #ccc;
+    font-weight: bold;
+}
+
+.locations > div {
+    display: none;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.locations > div.active {
+    display: block;
+    flex: 1;
+}
+
+.locations {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}

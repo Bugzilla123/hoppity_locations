@@ -1,70 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Hoppity Locations</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoppity Locations</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+    <div id="container"></div>
 
-        <link rel="stylesheet" href="./styles.css" />
-    </head>
-    <body>
-        <div id="container"></div>
+    <div class="tabs">
+        <button class="tab active" data-target="hub">HUB</button>
+        <button class="tab" data-target="gold">GOLD MINE</button>
+        <button class="tab" data-target="deep">DEEP CAVERNS</button>
+        <button class="tab" data-target="dwarven">DWARVEN MINES</button>
+        <button class="tab" data-target="ch">CRYSTAL HOLLOWS</button>
+        <button class="tab" data-target="farming">BARN</button>
+        <button class="tab" data-target="park">PARK</button>
+        <button class="tab" data-target="spiders">SPIDERS DEN</button>
+        <button class="tab" data-target="end">THE END</button>
+        <button class="tab" data-target="crimson">CRIMSON ISLE</button>
+    </div>
 
-        <div class="locations">
-            <div id="hub">
-                <h1 class="name">HUB</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            <div id="gold">
-                <h1 class="name">GOLD MINE</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            <div id="deep">
-                <h1 class="name">DEEP CAVERNS</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            <div id="dwarven">
-                <h1 class="name">DWARVEN MINES</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            <div id="ch">
-                <h1 class="name">CRYSTAL HOLLOWS</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            <div id="farming">
-                <h1 class="name">BARN</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            <div id="park">
-                <h1 class="name">PARK</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            <div id="spiders">
-                <h1 class="name">SPIDERS DEN</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            <div id="end">
-                <h1 class="name">THE END</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            
-            <div id="crimson">
-                <h1 class="name">CRIMSON ISLE</h1>
-                <h2 class="count"></h2>
-                <div class="images"></div>
-            </div>
-            
+    <div class="locations">
+        <div id="hub" class="active">
+            <h1 class="name">HUB</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
         </div>
-
-        <script src="./main.js"></script>
-    </body>
+        <div id="gold">
+            <h1 class="name">GOLD MINE</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
+        </div>
+        <div id="deep">
+            <h1 class="name">DEEP CAVERNS</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
+        </div>
+        <div id="dwarven">
+            <h1 class="name">DWARVEN MINES</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
+        </div>
+        <div id="ch">
+            <h1 class="name">CRYSTAL HOLLOWS</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
+        </div>
+        <div id="farming">
+            <h1 class="name">BARN</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
+        </div>
+        <div id="park">
+            <h1 class="name">PARK</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
+        </div>
+        <div id="spiders">
+            <h1 class="name">SPIDERS DEN</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
+        </div>
+        <div id="end">
+            <h1 class="name">THE END</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
+        </div>
+        <div id="crimson">
+            <h1 class="name">CRIMSON ISLE</h1>
+            <h2 class="count"></h2>
+            <div class="images"></div>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
 </html>
