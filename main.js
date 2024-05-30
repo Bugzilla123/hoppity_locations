@@ -249,17 +249,12 @@ class FoundInfo {
     }
 }
 let state = new FoundInfo();
-let hide_found = false;
+console.log(state);
 let island_containers = new Map();
 for (const [key, value] of Object.entries(state.found)) {
     island_containers.set(key, document.getElementById(key.toLowerCase()));
 }
-const setImageClass = (elem, found, hide_found) => {
-    let className = found ? 'found' : 'not-found';
-    if (hide_found && found)
-        className += " hidden";
-    elem.className = className;
-};
+const setImageClass = (elem, shouldBeFound) => (elem.className = shouldBeFound ? 'found' : 'not-found');
 function updateUI() {
     island_containers.forEach((container, island) => {
         let [name, count, images_container] = container.children;
@@ -268,19 +263,16 @@ function updateUI() {
         let total_in_island = eggs_in_island_data.length;
         let found_in_island = state.found[island].length;
         count.innerHTML = `${found_in_island} / 15 (Total ${total_in_island})`;
-        
         eggs_in_island_data.forEach((egg, _) => {
             var elem = document.createElement('img');
             elem.addEventListener('click', () => onClickImage(island, egg.index));
             elem.setAttribute('src', `./static/images/${egg.island.toLowerCase()}/${egg.index}.png`);
-            var is_found = state.found[island].includes(egg.index);
-            setImageClass(elem, is_found, hide_found);
+            setImageClass(elem, state.found[island].includes(egg.index));
             images_container.appendChild(elem);
         });
     });
 }
 updateUI();
-
 function onClickImage(island, index) {
     if (state.found[island].includes(index))
         state.found[island] = state.found[island].filter((item) => item !== index);
@@ -290,21 +282,3 @@ function onClickImage(island, index) {
     updateUI();
 }
 function onSubmitMsg() { }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll('.tab');
-    const tabContents = document.querySelectorAll('.locations > div');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            const target = tab.getAttribute('data-target');
-            document.getElementById(target).classList.add('active');
-        });
-    });
-});
