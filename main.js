@@ -249,12 +249,17 @@ class FoundInfo {
     }
 }
 let state = new FoundInfo();
-console.log(state);
+let hide_found = false;
 let island_containers = new Map();
 for (const [key, value] of Object.entries(state.found)) {
     island_containers.set(key, document.getElementById(key.toLowerCase()));
 }
-const setImageClass = (elem, shouldBeFound) => (elem.className = shouldBeFound ? 'found' : 'not-found');
+const setImageClass = (elem, found, hide_found) => {
+    let className = found ? 'found' : 'not-found';
+    if (hide_found && found)
+        className += ' hidden';
+    elem.className = className;
+};
 function updateUI() {
     island_containers.forEach((container, island) => {
         let [name, count, images_container] = container.children;
@@ -267,11 +272,17 @@ function updateUI() {
             var elem = document.createElement('img');
             elem.addEventListener('click', () => onClickImage(island, egg.index));
             elem.setAttribute('src', `./static/images/${egg.island.toLowerCase()}/${egg.index}.png`);
-            setImageClass(elem, state.found[island].includes(egg.index));
+            var is_found = state.found[island].includes(egg.index);
+            setImageClass(elem, is_found, hide_found);
             images_container.appendChild(elem);
         });
     });
 }
+let toggle_button = document.getElementById('toggle');
+toggle_button === null || toggle_button === void 0 ? void 0 : toggle_button.addEventListener('click', () => {
+    hide_found = !hide_found;
+    updateUI();
+});
 updateUI();
 function onClickImage(island, index) {
     if (state.found[island].includes(index))
@@ -281,4 +292,18 @@ function onClickImage(island, index) {
     state.saveToLocalStorage();
     updateUI();
 }
-function onSubmitMsg() { }
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.locations > div');
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            tabs.forEach((t) => t.classList.remove('active'));
+            tab.classList.add('active');
+            tabContents.forEach((content) => {
+                content.classList.remove('active');
+            });
+            const target = tab.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+});
