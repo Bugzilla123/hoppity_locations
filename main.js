@@ -262,7 +262,7 @@ const setImageClass = (elem, found, hide_found) => {
 };
 function updateUI() {
     island_containers.forEach((container, island) => {
-        let [name, count, button, images_container] = container.children;
+        let [name, count, images_container] = container.children;
         images_container.replaceChildren();
         let eggs_in_island_data = LOCATIONS_DATA.filter((egg) => egg.island == island);
         let total_in_island = eggs_in_island_data.length;
