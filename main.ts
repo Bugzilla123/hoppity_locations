@@ -283,13 +283,13 @@ for (const [key, value] of Object.entries(state.found)) {
 
 const setImageClass = (elem: HTMLElement, found: boolean, hide_found: boolean) => {
     let className = found ? 'found' : 'not-found'
-    if (hide_found && found) className += " hidden"
+    if (hide_found && found) className += ' hidden'
     elem.className = className
 }
 
 function updateUI() {
     island_containers.forEach((container, island) => {
-        let [name, count, button, images_container] = container.children
+        let [name, count, images_container] = container.children
         images_container.replaceChildren()
 
         let eggs_in_island_data = LOCATIONS_DATA.filter((egg) => egg.island == island)
@@ -299,33 +299,27 @@ function updateUI() {
 
         count.innerHTML = `${found_in_island} / 15 (Total ${total_in_island})`
 
-        button.addEventListener('click', () => {
-            if (images_container.className.includes('hidden')) images_container.className = 'images'
-            else images_container.className = 'images hidden'
-        })
-
         eggs_in_island_data.forEach((egg, _) => {
             var elem = document.createElement('img')
             elem.addEventListener('click', () => onClickImage(island, egg.index))
             elem.setAttribute('src', `./static/images/${egg.island.toLowerCase()}/${egg.index}.png`)
-            
+
             var is_found = state.found[island].includes(egg.index)
 
             setImageClass(elem, is_found, hide_found)
-            
+
             images_container.appendChild(elem)
         })
     })
 }
 
-updateUI()
-
-
-let global_toggle = document.getElementById('global-toggle')
-global_toggle?.addEventListener('click', () => {
+let toggle_button = document.getElementById('toggle')
+toggle_button?.addEventListener('click', () => {
     hide_found = !hide_found
     updateUI()
 })
+
+updateUI()
 
 function onClickImage(island: Island, index: number) {
     if (state.found[island].includes(index)) state.found[island] = state.found[island].filter((item) => item !== index)
@@ -334,4 +328,20 @@ function onClickImage(island: Island, index: number) {
     updateUI()
 }
 
-function onSubmitMsg() {}
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tab')
+    const tabContents = document.querySelectorAll('.locations > div')
+
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            tabs.forEach((t) => t.classList.remove('active'))
+            tab.classList.add('active')
+            tabContents.forEach((content) => {
+                content.classList.remove('active')
+            })
+
+            const target = tab.getAttribute('data-target')
+            document.getElementById(target as string)!.classList.add('active')
+        })
+    })
+})
